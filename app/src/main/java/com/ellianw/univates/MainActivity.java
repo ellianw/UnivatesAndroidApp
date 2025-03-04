@@ -10,6 +10,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        users = new HashMap<String, String>();
+        users = new HashMap<>();
         users.put("admin","admin");
         users.put("user","user");
 
-        hints = new HashMap<String, String>();
+        hints = new HashMap<>();
         hints.put("admin","Senha padrão de administrador");
         hints.put("user","'Usuário' em inglês");
 
@@ -67,10 +71,35 @@ public class MainActivity extends AppCompatActivity {
                     }).setNegativeButton("Não",null);
                     AlertDialog alert = builder.create();
                     alert.show();
+                    return;
                 }
                 builder.setMessage("Usuário Logado!");
                 AlertDialog alert = builder.create();
                 alert.show();
+            }
+        });
+
+        loginEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                TextInputLayout loginLayout = findViewById(R.id.nameInputLayout);
+                if (!hasFocus) {
+                    loginLayout.setHint("Insira seu nome de usuário!");
+                } else {
+                    loginLayout.setHint("Login:");
+                }
+            }
+        });
+
+        passwordEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                TextInputLayout passwordLayout = findViewById(R.id.passowordInputLayout);
+                if (hasFocus) {
+                    passwordLayout.setHint("Senha:");
+                } else {
+                    passwordLayout.setHint("Insira sua senha!");
+                }
             }
         });
     }

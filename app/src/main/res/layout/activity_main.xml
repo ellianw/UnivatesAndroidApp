@@ -21,6 +21,7 @@
         android:id="@+id/nameInputLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
+        android:hint="Insira seu nome de usuário!"
         app:layout_constraintBottom_toTopOf="@+id/passowordInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,7 +33,6 @@
             android:id="@+id/it_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insira seu nome de usuário"
             tools:text="Digite seu nome" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -40,6 +40,7 @@
         android:id="@+id/passowordInputLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
+        android:hint="Insira sua senha!"
         app:layout_constraintBottom_toTopOf="@+id/bt_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,7 +52,6 @@
             android:id="@+id/it_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insira sua senha"
             android:inputType="textPassword"
             tools:text="Digite sua senha">
 
