@@ -1,11 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    tools:ignore="MissingConstraints,HardcodedText">
+    tools:context=".MainActivity"
+    tools:ignore="MissingConstraints,HardcodedText,Autofill">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="18dp"
+        android:text="Itens em estoque"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/name"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/quantity"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Quantidade do item"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/bt_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"/>
+    <Button
+        android:id = "@+id/bt_send"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity = "center"
+        android:text = "Enviar"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity"/>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#6A6A6A"
+        app:layout_constraintBottom_toTopOf="@+id/listview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_send"/>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="330dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:choiceMode="multipleChoice"
+        app:layout_constraintBottom_toTopOf="@+id/btnGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <LinearLayout
+        android:id="@+id/btnGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview">
+            <Button
+                android:id = "@+id/bt_delete"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center"
+                android:text = "Deletar"
+                android:enabled="false"/>
+            <Button
+                android:id = "@+id/bt_edit"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:layout_gravity = "center"
+                android:text = "Editar"
+                android:enabled="false"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
