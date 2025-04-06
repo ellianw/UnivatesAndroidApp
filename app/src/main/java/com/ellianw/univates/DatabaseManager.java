@@ -19,4 +19,5 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE item");
         onCreate(db);
     }
+
 }

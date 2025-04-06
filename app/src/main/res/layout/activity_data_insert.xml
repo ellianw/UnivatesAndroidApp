@@ -23,51 +23,51 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="18dp"
         android:text="Itens em estoque"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/listview"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/listview"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/name"
         android:layout_width="330dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:choiceMode="multipleChoice"
-        app:layout_constraintBottom_toTopOf="@+id/btnGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGroup" />
-
-    <LinearLayout
-        android:id="@+id/btnGroup"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5sp"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/quantity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listview">
-        <Button
-            android:id = "@+id/bt_delete"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:layout_gravity = "center"
-            android:text = "Deletar"
-            android:enabled="false"/>
-        <Button
-            android:id = "@+id/bt_edit"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:layout_gravity = "center"
-            android:text = "Editar"
-            android:enabled="false"/>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/quantity"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Quantidade do item"
+        android:minHeight="48dp"
+        android:maxLines="1"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/bt_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"/>
+    <Button
+        android:id = "@+id/bt_send"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity = "center"
+        android:text = "Enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
