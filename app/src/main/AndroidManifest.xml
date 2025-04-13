@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -27,5 +30,6 @@
         <activity android:name=".DataEntryActivity"/>
         <activity android:name=".SqlManipulationActivity"/>
         <activity android:name=".DataInsertActivity"/>
+        <activity android:name=".NotificationActivity"/>
     </application>
 </manifest>
