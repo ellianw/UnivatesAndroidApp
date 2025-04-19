@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import android.os.StrictMode;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,21 +18,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText loginEdit = null;
-    private EditText passwordEdit = null;
-    private Map<String, String> users;
-    private Map<String, String> hints;
+    EditText loginEdit = null;
+    EditText passwordEdit = null;
+    private Map<String, String> users = new HashMap<>();
+    private Map<String, String> hints = new HashMap<>();
+
+    private AlertDialog.Builder builder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        users = new HashMap<>();
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+        builder = new AlertDialog.Builder(LoginActivity.this);
+
         users.put("admin","admin");
         users.put("user","user");
 
-        hints = new HashMap<>();
         hints.put("admin","Senha padrão de administrador");
         hints.put("user","'Usuário' em inglês");
 
@@ -41,39 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String login = loginEdit.getText().toString();
-                String password = passwordEdit.getText().toString();
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-
-                if(login.isBlank())
-                {
-                    Toast.makeText(LoginActivity.this, "Por favor, insira seu nome de usuário!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(password.isBlank()){
-                    Toast.makeText(LoginActivity.this, "Por favor, insira sua senha!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(!users.containsKey(login)){
-                    Toast.makeText(LoginActivity.this, "Usuário não encontrado", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!users.get(login).equals(password)){
-                    builder.setMessage("Senha incorreta! \nGostaria de ver a dica de senha?").setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                            Toast.makeText(getApplicationContext(),hints.get(login), Toast.LENGTH_LONG).show();
-                        }
-                    }).setNegativeButton("Não",null);
-                    AlertDialog alert = builder.create();
-                    alert.show();
-                    return;
-                }
-                builder.setMessage("Usuário Logado!");
-                AlertDialog alert = builder.create();
-                alert.show();
+                loginProcedure();
             }
         });
 
@@ -100,5 +78,44 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    protected void loginProcedure(){
+        String login = loginEdit.getText().toString();
+        String password = passwordEdit.getText().toString();
+
+        if(login.isBlank())
+        {
+            Toast.makeText(LoginActivity.this, "Por favor, insira seu nome de usuário!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(password.isBlank()){
+            Toast.makeText(LoginActivity.this, "Por favor, insira sua senha!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        validateLogin(login,password);
+    }
+
+    boolean validateLogin(String login, String password){
+        if(!users.containsKey(login)){
+            Toast.makeText(LoginActivity.this, "Usuário não encontrado", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!users.get(login).equals(password)){
+            builder.setMessage("Senha incorreta! \nGostaria de ver a dica de senha?").setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                    Toast.makeText(getApplicationContext(),hints.get(login), Toast.LENGTH_LONG).show();
+                }
+            }).setNegativeButton("Não",null);
+            AlertDialog alert = builder.create();
+            alert.show();
+            return false;
+        }
+        builder.setMessage("Usuário Logado!");
+        AlertDialog alert = builder.create();
+        alert.show();
+        return true;
     }
 }

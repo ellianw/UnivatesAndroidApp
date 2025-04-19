@@ -19,10 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LocationListener, SensorEventListener {
+public class GPSActivity extends AppCompatActivity implements LocationListener, SensorEventListener {
     private TextView tvFirPos = null;
     private TextView tvActPos = null;
     private TextView tvDistance = null;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_gps);
 
         Toolbar appBar = findViewById(R.id.toolbar);
         setSupportActionBar(appBar);
