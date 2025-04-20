@@ -21,7 +21,7 @@
         android:theme="@style/Theme.Univates"
         tools:targetApi="33">
         <activity
-            android:name=".LoginWebsocketActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,5 +35,7 @@
         <activity android:name=".DataInsertActivity"/>
         <activity android:name=".NotificationActivity"/>
         <activity android:name=".GPSActivity"/>
+        <activity android:name=".LoginWebsocketActivity"/>
+        <activity android:name=".CPFActivity"/>
     </application>
 </manifest>
