@@ -37,5 +37,7 @@
         <activity android:name=".GPSActivity"/>
         <activity android:name=".LoginWebsocketActivity"/>
         <activity android:name=".CPFActivity"/>
+        <activity android:name=".CNPJActivity"/>
+        <activity android:name=".RecipeInsertActivity"/>
     </application>
 </manifest>

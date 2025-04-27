@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ellianw.univates.Utils.DatabaseManager;
+
 import java.util.ArrayList;
 
 public class SqlManipulationActivity extends AppCompatActivity {

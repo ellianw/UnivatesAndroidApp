@@ -16,6 +16,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ellianw.univates.Utils.DatabaseManager;
+
 import java.util.ArrayList;
 
 public class NotificationActivity extends AppCompatActivity {
